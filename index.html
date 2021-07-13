@@ -9,11 +9,28 @@
 
 </head>
 <body>
-    <b class="title">Password Checker</b>
-    <br><br>
-    <form class="form">
-        <label>Enter password to check the strength:</label>
-        <input> 
+    <h1 align="center">Appointment Booking Portal</h1>
+    <br>
+    
+    <form>
+        <label>Name:</label>
+        <input type="text"  required> 
+        <br>
+        <label>Phone No.:</label>
+        <input type="number" required>
+        <br>
+        <label>Gender:</label>
+        <input type="radio" id="Male" value="Male" name="Gender" checked>
+        <label for="Male"  >Male</label>
+        <input type="radio"id="Female" value="Female" name ="Gender">
+        <label for="Female" >Female</label>
+        <br>
+        <label>Problem :</label>
+        <input type="text" required>
+        <br>
+        <Label>Date and Time:</Label>
+        <input type="datetime-local" required>
+        <input type="submit" value="Book an appointment">
     </form>
 </body>
 </html>
