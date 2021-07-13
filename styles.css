@@ -1,0 +1,15 @@
+.body{
+    align-content: center;
+    justify-content: center;
+    display: flex;
+}
+.title{
+    font-size: 4rem;
+    align-content: center;
+    align-items: center;
+}
+
+.form{
+    justify-content: center;
+    align-items: center;
+}
