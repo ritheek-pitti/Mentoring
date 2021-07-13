@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script>
 
 </head>
 <body>
     <h1 align="center">Appointment Booking Portal</h1>
     <br>
     
-    <form>
+    <form id="form">
         <label>Name:</label>
-        <input type="text"  required> 
+        <input type="text" name="name" required> 
         <br>
         <label>Phone No.:</label>
-        <input type="number" required>
+        <input type="tel" name="phone" required>
         <br>
         <label>Gender:</label>
-        <input type="radio" id="Male" value="Male" name="Gender" checked>
+        <input type="radio" id="Male" value="Male" checked>
         <label for="Male"  >Male</label>
-        <input type="radio"id="Female" value="Female" name ="Gender">
+        <input type="radio"id="Female" value="Female">
         <label for="Female" >Female</label>
         <br>
         <label>Problem :</label>
-        <input type="text" required>
+        <textarea rows=5 name="problem" required></textarea>
         <br>
         <Label>Date and Time:</Label>
-        <input type="datetime-local" required>
-        <input type="submit" value="Book an appointment">
+        <input type="datetime-local" id="dateAndTime" required>
+        <button type="submit">Book an appointment</button>
     </form>
 </body>
 </html>

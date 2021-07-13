@@ -11,14 +11,13 @@ body{
     align-content: center;
     align-items: center;
 }
-
-input[type=text],input[type=number] {
+input[type=text],input[type=number],textarea,input[type=tel] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
   }
-  input[type=submit]{
+  button{
     background-color: #4CAF50;
   border: none;
   color: white;
@@ -30,7 +29,8 @@ input[type=text],input[type=number] {
   form {
     background-color: #fff;
     max-width: 500px;
-    margin: 50px auto;
+    margin-left:auto;
+    margin-right: auto;
     padding: 30px 20px;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
 }
