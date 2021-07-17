@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Appointment Booking App</title>
     <link href="styles.css" rel="stylesheet">
     <script src="script.js" defer></script>
 
@@ -17,23 +19,72 @@
     
     <form id="form">
         <label>Name:</label>
-        <input type="text" name="name" required> 
+        <input type="text" name="name" id="name" placeholder="Enter your name"> 
         <br>
         <label>Phone No.:</label>
-        <input type="tel" name="phone" required>
+        <input type="tel" name="phone" id="pNo" required placeholder="Enter your number">
         <br>
         <label>Gender:</label>
-        <input type="radio" id="Male" value="Male" checked>
+        <input type="radio" id="Male" value="Male" name="Gender" checked>
         <label for="Male"  >Male</label>
-        <input type="radio"id="Female" value="Female">
-        <label for="Female" >Female</label>
+        <input type="radio"id="Female" value="Female" name="Gender">
+        <label for="Female"  >Female</label>
         <br>
         <label>Problem :</label>
-        <textarea rows=5 name="problem" required></textarea>
+        <textarea rows=5 name="problem" id="problem"  placeholder="Describe the problem" required></textarea>
         <br>
         <Label>Date and Time:</Label>
-        <input type="datetime-local" id="dateAndTime" required>
+        <input type="datetime-local" name="dateAndTime" id="dAndT" required>
         <button type="submit">Book an appointment</button>
     </form>
+    <div class="details" id="appointmentConfirmation" hidden>
+        <h1 class="title">Appointment Summary</h1><br>   
+        <span class="dinfo" id="nameDisplay"></span> <br>       
+        <span class="dinfo" id="numDisplay"></span> <br>  
+        <span class="dinfo" id="genderDisplay"></span> <br>                   
+        <span  id="descDisplay" ></span> <br>
+        <span class="dinfo" id="dateDisplay"></span> <br>
+        <div class="button">
+          <input type="submit" value="Reschedule Appointment" id="update" name="update" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        </div>
+      </div> 
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Reschedule Appointment</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="" id="modalformid" >
+                <div class="user">
+                    <label class="info">Name</label>
+                    <input name="name" id="modname" type="text"  >
+                    <label class="info">Phone Number</label>
+                    <input name="phone" id="modnum" type="text" >
+                    <div class="gender-details">
+                        <label>Gender:</label>
+                        <input type="radio" id="modaldot-1" value="Male" name="Gendermod">
+                        <label for="Male"  >Male</label>
+                        <input type="radio"id="modaldot-2" value="Female" name="Gendermod">
+                        <label for="Female"  >Female</label>
+                      </div>    
+                    <label class="info">Problem</label>
+                    <textarea name="problem" id="moddesc" rows="5"  type="text" ></textarea>
+                    <label class="info">Date and Time</label>
+                    <input name="appointment" id="moddate" type="datetime-local" >
+                </div>
+                <div class="button">
+                  <input type="button" id="modalsubmit" name="modalsubmit" value="Update">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>     
 </body>
 </html>
