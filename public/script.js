@@ -11,7 +11,7 @@ $(document).ready(function() {
         },
         problem:{
             required : true,
-            minlength : 1,
+            minlength : 10,
         },
         dateAndTime:{
             required : true,
@@ -39,7 +39,7 @@ $(document).ready(function() {
           },
           problem:{
               required : true,
-              minlength : 1,
+              minlength : 10,
           },
           dateAndTime:{
               required : true,
@@ -113,7 +113,6 @@ $(document).ready(function() {
         //console.log(gender);
         console.log($("#modalformid").valid());
         if($("#modalformid").valid()){
-            //  $("#formid").hide();
             $("#appointmentConfirmation").prop("hidden", false);
             $("#nameDisplay").text("Name : "+name);
             $("#numDisplay").text("Phone Number : "+pNo);
