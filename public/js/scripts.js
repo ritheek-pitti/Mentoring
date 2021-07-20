@@ -67,10 +67,24 @@ $(document).ready(function() {
         let temp = document.getElementsByName("Gender");
     for(i =0;i<temp.length;i++){
       if(temp[i].checked){
-          console.log(temp[i].value);
+          //console.log(temp[i].value);
         gender = temp[i].value;
       }
     }
+    $.ajax({
+            type: 'POST',
+            url: "http://localhost:3000/add",
+            data: {
+                    name: name,
+                    phone: pNo,
+                    Gender: gender,
+                    problem : problem,
+                    dateAndTime : dateAndTime
+                  },
+            cache: false,
+            success : result => console.log(result)
+            
+    })
        if( $("#form").valid())
             {
                 $("#appointmentConfirmation").prop("hidden", false);
