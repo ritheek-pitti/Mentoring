@@ -12,23 +12,34 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFind
 .catch(err=>{
     console.log("failed")
 })
-
-// var bodyParser= require('body-parser')
-// var urlEncodedParser= bodyParser.urlencoded
-var cors = require('cors')
+var cors = require('cors');
 app.use(cors());
 app.use(express.urlencoded({extended : true}));
-// app.set('views',path.join(__dirname,'views'));
-// app.set('view engine','ejs');
 app.use(express.static(path.join(__dirname,'public')));
 
+app.set('views',path.join(__dirname,'views'));
+app.set('view engine','ejs');
+
 app.get('/',(req, res,) => {
-   res.sendFile(__dirname+"//public/views/index.html");
+   res.sendFile(__dirname+"/views/index.html");
 });
 app.post('/add', async(req,res)=>{
-    //console.log(req);
+   
     const newAppointment = new Appointment(req.body);
-    console.log(newAppointment.id);
     await newAppointment.save();
+    const id = newAppointment.id;
+    res.json(id);
 });
+app.put('/update/:id',async(req,res)=>{
+    const {id}=req.params;
+    const update= await Appointment.findByIdAndUpdate(id,req.body);
+});
+app.get('/all',async(req,res)=>{
+    const data= await Appointment.find();
+    //console.log(data);
+    res.render('displayall.ejs',{data});
+});
+app.get('/login',(req,res)=>{
+    res.sendFile(__dirname+"/views/login.html");
+})
 app.listen(port);

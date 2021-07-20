@@ -1,0 +1,16 @@
+h1{
+    align-content: center;
+    color: white;
+}
+body{
+    background-color: #4CAF50;
+}
+
+.container{
+    width:50%;
+    background-color:white;
+    border-radius: 10px;
+    border: 2px solid gray;
+    box-shadow:3px 3px 3px gray;
+    margin-bottom: 50px; 
+} 

@@ -55,7 +55,7 @@ $(document).ready(function() {
           }
         }
       });
-      let name,pNo,problem,dateAndTime,gender;
+      let name,pNo,problem,dateAndTime,gender,id;
     const formDetails = document.getElementById("form");
     formDetails.addEventListener("submit", async (ev) => {
        ev.preventDefault();
@@ -71,22 +71,27 @@ $(document).ready(function() {
         gender = temp[i].value;
       }
     }
-    $.ajax({
-            type: 'POST',
-            url: "http://localhost:3000/add",
-            data: {
-                    name: name,
-                    phone: pNo,
-                    Gender: gender,
-                    problem : problem,
-                    dateAndTime : dateAndTime
-                  },
-            cache: false,
-            success : result => console.log(result)
-            
-    })
+   
        if( $("#form").valid())
             {
+              $.ajax({
+                      type: 'POST',
+                      url: "http://localhost:3000/add",
+                      data: {
+                              name: name,
+                              phone: pNo,
+                              Gender: gender,
+                              problem : problem,
+                              dateAndTime : dateAndTime
+                            },
+                      //cache: false,
+                        success : function (data){
+
+                                  id=data;
+                        }
+                
+                  });
+                  console.log(id);
                 $("#appointmentConfirmation").prop("hidden", false);
                 $("#nameDisplay").text("Name : "+name);
                 $("#numDisplay").text("Phone Number : "+pNo);
@@ -134,6 +139,18 @@ $(document).ready(function() {
             $("#dateDisplay").text("Appointment Slot : "+dateAndTime);
             $("#genderDisplay").text("Appointment Slot : "+gender);
             $('#exampleModal').modal('toggle');
+            $.ajax({
+              type: "PUT",
+              url: `http://localhost:3000/update/${id}`,
+              data: {
+                name: name,
+                phone: pNo,
+                Gender: gender,
+                problem : problem,
+                dateAndTime : dateAndTime
+              },
+              //success: success,
+            });
         };
       });
   });

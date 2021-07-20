@@ -10,7 +10,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFind
 })
 
 const Appointment1=new Appointment({
-    name:"Jai Arora",
+    name:"Testing ",
     phone: "268205"
     });
 const db=mongoose.connection;
