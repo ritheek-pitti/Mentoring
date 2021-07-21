@@ -84,7 +84,6 @@ $(document).ready(function() {
                               problem : problem,
                               dateAndTime : dateAndTime
                             },
-                      //cache: false,
                         success : function (data){
 
                                   id=data;
@@ -149,7 +148,6 @@ $(document).ready(function() {
                 problem : problem,
                 dateAndTime : dateAndTime
               },
-              //success: success,
             });
         };
       });
