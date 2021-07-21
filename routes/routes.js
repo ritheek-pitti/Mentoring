@@ -1,7 +1,7 @@
 const express = require('express');
 const router =express.Router();
 const Appointment = require("../models/appointmentmodel");
-
+const authenticate = require("../middleware/authenticate")
 // router.get('/',(req, res,) => {
 //     res.sendFile("D:\Mentoring\views\index.html"); 
 //  });
@@ -16,7 +16,7 @@ const Appointment = require("../models/appointmentmodel");
      const {id}=req.params;
      const update= await Appointment.findByIdAndUpdate(id,req.body);
  });
- router.get('/all',async(req,res)=>{
+ router.get('/all',authenticate,async(req,res)=>{
      const data= await Appointment.find();
      //console.log(data);
      res.render('displayall.ejs',{data});

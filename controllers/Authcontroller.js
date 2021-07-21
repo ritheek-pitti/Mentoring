@@ -31,13 +31,38 @@ const register = (req,res,next)=>{
 
                     })
         }
-// const login=(req,res,next)=>{
-//     var username=req.body.name;
-//     var password= req.body.password;
-//     User.findOne({$or:[{name:username}]});
+const login=(req,res,next)=>{
+    var username=req.body.name;
+    var password= req.body.password;
+    User.findOne({name:username})
+    .then( user=>{
+        if(user)
+        {
+            bcrypt.compare(password,user.password,(err,result)=>{
+                if(err){
+                    res.json({
+                        message : "Password mismatch"
+                    })
+                }
+                if(result)
+                {
+                    let token = jwt.sign({name : user.name},'abc',{expiresIn : '1h'})
+                    res.json({
+                        message : 'login Successful',
+                        token : token
+                    })
+                }
+            })
+        }
+        else{
+            res.json({
+                message : "User not found"
+            })
+        }
+    })
 
-// }
+}
 
 module.exports={
-    register
+    register ,login
 }
