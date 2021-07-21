@@ -10,7 +10,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFind
     console.log("connected to mongodb");
 })
 .catch(err=>{
-    console.log("failed")
+    console.log(err)
 })
 var cors = require('cors');
 app.use(cors());
@@ -39,6 +39,9 @@ app.get('/all',async(req,res)=>{
     //console.log(data);
     res.render('displayall.ejs',{data});
 });
+app.post('/login',(req,res)=>{
+    res.redirect('/all');
+})
 app.get('/login',(req,res)=>{
     res.sendFile(__dirname+"/views/login.html");
 })
