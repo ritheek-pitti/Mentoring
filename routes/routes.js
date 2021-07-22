@@ -19,7 +19,7 @@ const authenticate = require("../middleware/authenticate")
  router.get('/all',authenticate,async(req,res)=>{
      const data= await Appointment.find();
      //console.log(data);
-     res.render('displayall.ejs',{data});
+     res.render('displayall',{data});
  });
  router.post('/login',(req,res)=>{
      res.redirect('/all');
